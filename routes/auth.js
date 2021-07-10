@@ -27,7 +27,7 @@ router.post('/adminRegister', async (req, res) => {
         const user = new User({ username: req.body.username, email: req.body.email,role:"admin" });
         const newUser = await User.register(user, req.body.password);
         req.flash('success', 'Registered Successfully');
-        res.redirect('/login');
+        res.redirect('/');
     }
     catch (e) {
         req.flash('error', e.message);
