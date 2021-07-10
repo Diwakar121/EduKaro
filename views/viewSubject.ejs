@@ -1,0 +1,46 @@
+<%- include("partials/header")%>
+
+<%- include("partials/navbar")%>
+<link rel="stylesheet" href="/css/index.css" >
+
+<div class="container-fluid" style="height: 100vh;margin-top:10vh">
+
+  <div class="container-fluid justify-content-center" style="height: 30vh; width: 75%; margin: auto;">
+      <div class="card m-3" style="height: inherit;">
+        <%- include("./partials/flash")%>
+          <h5 class="card-header" style="text-align: center;">Announcements</h5>
+          <div class="card-body" style="overflow-y:auto;">
+            <h5 class="card-title" style="text-align: center;">Below is the list of recent announcements</h5>
+            <p class="card-text">This is an announcement</p>
+        
+          </div>
+          <div class="card-footer" style="text-align: center;">
+              <a href="/discussionRoom" class="btn btn-light btn-outline-danger">Go To Live Discussion Room</a>
+          </div>
+      </div>
+  </div>
+
+  <div class="container-fluid justify-content-center " style=" width: 75%; margin: auto;">
+      <div class="card m-3 b-3">
+          <h5 class="card-header" style="text-align: center;">Subject commits</h5>
+          <!-- <div class="card-body" > -->
+              <br><br>
+              <ul class="list-group list-group-flush">
+                <% for(content of contents) { %>
+                     <a class="btn btn-danger btn-outline-light m-1" href="/viewContent/<%=content._id%>" role="button"><%=content.title %></a>
+                  <% } %>
+              </ul>
+              <br><br>
+          <!-- </div> -->
+          
+      </div>
+  </div>
+
+  <div class="m-3" style="height: 0.25em;">
+  </div>
+
+</div>
+
+<%- include("partials/footer")%>
+
+

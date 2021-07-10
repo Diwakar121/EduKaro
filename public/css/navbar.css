@@ -1,0 +1,16 @@
+.navbar ,.footer {
+    background-color:#f30e0eb0;
+    
+    }
+    
+    .navbar a {
+        color:white;
+    }
+    
+    .navbar-brand {
+        font-family: "Orbitron", sans-serif;
+        letter-spacing: 0.1em;
+      }
+      
+  
+      

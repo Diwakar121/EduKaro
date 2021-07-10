@@ -1,0 +1,29 @@
+<nav class="navbar  fixed-top navbar-expand-lg " >
+    <div class="container-fluid">
+        
+      <a class="navbar-brand" href="/"><i class="fas fa-newspaper" style="margin-right:5px"></i>EduKaro</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span style="color:white;"><i class="fas fa-bars"></i></span>
+      </button>
+      <div class="collapse navbar-collapse"  id="navbarNav">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        </ul>
+        <div class="navbar-nav ml-auto " >
+          
+              <%if(!currentUser){%>
+                <a href="/" class="nav-link active">Login</a>
+              
+                <%}else{%>
+              <a href="/mySettings" class="nav-link active text-capitalize">Hello <%=currentUser.username%></a>
+        
+              <a href="#" id="notify" class="nav-link active"><i class="far fa-bell"></i></i> 
+                <sup><span class="badge bg-danger">0</span></sup> 
+             </a>
+
+            <%}%>
+      
+      </div>
+      </div>
+    </div>
+    
+  </nav>

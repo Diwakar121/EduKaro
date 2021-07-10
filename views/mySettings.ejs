@@ -1,0 +1,64 @@
+<%- include("partials/header")%>
+
+<%- include("partials/navbar")%>
+<link rel="stylesheet" href="/css/index.css" >
+
+
+<div class="container">
+  
+  <div class="row">
+    
+    <div class="col-lg-6 col-sm-12" style="margin-top:10vh;">
+      <%- include("./partials/flash")%>
+        <div class="content">
+         <h1><%=currentUser.username %> - Profile Settings </h1>
+         <a href='/logout'><button type="button" class="btn btn-danger mt-2">Logout</button> </a>
+         <br>
+         <button id="changePwd" type="button" class="btn btn-danger mt-2"data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Change Password</button>
+
+          
+         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+           <div class="modal-dialog" role="document">
+             <div class="modal-content">
+               <div class="modal-header">
+                 <h5 class="modal-title" id="exampleModalLabel">Change Password</h5>
+                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                   <span aria-hidden="true">&times;</span>
+                 </button>
+               </div>
+               <div class="modal-body">
+                 <form  action="/changePassword" method="POST" style="max-width:70%;margin:10px auto" >
+                   
+                   <div class="mb-3">
+                     <label for="img" class="form-label">Profile Pic</label>
+                     <input id="oldPassword" type="password" class="form-control"  placeholder="Old Pasword" name="oldPassword" required>
+                     <input id="newPassword" type="password" class="form-control mt-2"  placeholder="New Pasword" name="newPassword" required>
+                   </div>
+                   <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button id="submit" type="submit" class="btn btn-primary">Change Password</button>
+                  </div>
+                   </form>
+               </div>
+               
+             </div>
+           </div>
+         </div>
+
+
+          
+        </div>
+
+  </div>
+  
+  </div>
+  
+
+</div>
+<script src="js/index.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+<%- include("partials/footer")%>
+
+

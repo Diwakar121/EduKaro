@@ -1,0 +1,57 @@
+<%- include("../partials/header")%>
+<%- include("../partials/navbar")%>
+<link href="/css/show.css" rel="stylesheet" >
+<div class="container" style="margin-top: 5rem;">
+
+  <%- include("../partials/flash")%>
+
+  
+    <div class="row ">
+        <div class="col-12 ">
+            <h5 class="card-title fs-1 "><%= content.title %></h5>
+            <div class="card" >
+                <div style="background-color:#E8E8E8">
+                <img src="<%=content.imgCover.url%>" class="rounded mx-auto d-block" alt="..."style="width:30vw;height:20vw; opacity: 0.7;" >
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title"><%= content.title %></h5>
+                
+                  <p class="card-text" style="white-space: pre-wrap;"><%= content.desc %></p>
+                  
+                  <% var a=0 %>
+                  <% var a1=0 %>
+                  <% var a2=0 %>
+
+                  <% while(a<(content.images.length+content.texts.length)) { %>
+                    <%  if(a1<content.images.length && a== parseInt(content.images[a1].pos)) { %>
+                        <img src="<%=content.images[a1].url %>" id="contentImg" class="card-img-top m-2" alt="...">
+                          <% a1+=1 } else if(a2<content.texts.length && a== parseInt(content.texts[a2].pos)) { %>
+                            <p class="card-text" style="white-space: pre-wrap;"><%= content.texts[a2].value %></p> 
+                            <% a2+=1} %>
+                            <% a+=1  }%>
+                    
+
+
+
+                           <% if(currentUser && content.writer==currentUser.id) {%>
+                            
+                  <div class="mt-3">
+                    <form action="/contents/<%=content._id%>?_method=DELETE" method="POST">
+                        <button class="btn btn-danger">Delete</button>
+                  </form>
+                  </div>
+                  <% } %>
+                 
+                </div>
+                
+              </div>
+        </div>
+        </div>
+
+       
+        </div>
+
+
+
+
+<%- include("../partials/footer")%>

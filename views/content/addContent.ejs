@@ -1,0 +1,41 @@
+<%- include("../partials/header")%>
+<%- include("../partials/navbar")%>
+<link href="/css/new.css" rel="stylesheet" >
+
+
+<div class="container" style="margin-top:5rem;width:80vw;margin-bottom: 11rem;">
+  <%- include("../partials/flash")%>
+            <form id="<%=subjID%>" action="/addContent/<%=subjID%>" method="POST" style="max-width:70%;margin:10px auto" >
+                <div class="mb-3">
+                  <label for="name" class="form-label">Title of the page</label>
+                  <input id="title" type="text" class="form-control"  placeholder="Title"  name="blog[title]" required>
+                  
+                </div>
+                <div class="mb-3">
+                  <label for="img" class="form-label">Cover Image </label>
+                  <input id="img" type="file" class="form-control"  placeholder="Cober Image" name="blog[img]" required>
+                  
+                </div>
+                
+                
+                
+                <div class="mb-3" >
+                    <label for="desc" class="form-label">Description in less than 50 words</label>
+                    <textarea  id="desc" class="form-control" style="white-space: pre-wrap;" cols="20" rows="5" name="blog[content]" required></textarea>
+                    
+                  </div>
+                  <div class="mb-3" id="last"></div>
+                  <button type="button" class="btn btn-secondary btn-dark addImg mb-1" id="addImg">Add ImageBox</button>
+                  <button type="button" class="btn btn-secondary btn-dark addText mb-1" id="addText">Add TextBox</button>
+                  <div class="mt-3">
+                <button id="submitPost" type="submit" class="btn btn-success mt-5">Submit Post</button>
+                <div id ="load" ></div>
+                </div>
+              </form>
+              
+   
+</div>
+
+<script src="/js/new.js"></script>
+
+<%- include("../partials/footer")%>

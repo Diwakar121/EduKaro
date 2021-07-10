@@ -1,0 +1,71 @@
+<%- include("partials/header")%>
+
+<%- include("partials/navbar")%>
+<link rel="stylesheet" href="/css/index.css" >
+
+
+<div class="container">
+  
+  <div class="row">
+    
+    <div class="col-lg-6 col-sm-12" style="margin-top:10vh;">
+      <%- include("./partials/flash")%>
+        <div class="content">
+          EduKaro
+
+           <div class="loginBox">
+            
+            <%if(currentUser){%>
+             
+             <div style="margin:10px;">
+              <h2>Hello <%= currentUser.username %>!!</h2>
+              <a href='/myDashBoard'> <button type="button" class="btn btn-danger">Continue to DashBoard</button></a>
+             <a href='/logout'><button type="button" class="btn btn-secondary">Logout</button> </a>
+             </div>            
+              <% } else { %>
+        
+
+            <form class="validated-form" action="/login" method="POST" style="max-width:70%;margin:10px auto" novalidate>
+               
+                <h4 class="display-4">Login</h4>
+                <div class="mb-3">
+                  <label for="username" class="form-label">Username</label>
+                  <input type="text" class="form-control" id="username" placeholder="Useraname" name="username" required>
+                  <div class="valid-feedback">
+                    Looks good!
+                  </div>
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="password" placeholder="Password" name="password" required>
+                    <div class="valid-feedback">
+                      Looks good!
+                    </div>
+                  </div>
+               
+                <button type="submit" id="login" class="btn btn-success">Login</button>
+                  <br>
+                  <br>
+                <a style="size:0.2em;" href="/adminRegister">admin Reg.?</a>
+              </form>
+            <% } %>
+
+   
+
+          </div>
+
+        </div>
+  </div>
+
+  <div class="col-lg-6 col-sm-12" style="margin-top:17vh;">
+    <img src="/images/background.jpg"  class="img-fluid" alt="Responsive image">
+  </div>
+  
+  </div>
+  
+
+</div>
+<script src="js/index.js"></script>
+<%- include("partials/footer")%>
+
+

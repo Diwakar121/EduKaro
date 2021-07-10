@@ -1,0 +1,27 @@
+  
+  body {
+    background-color:white;
+  }
+  
+  .content {
+      min-height:76vh;
+      margin:2rem;
+  }
+  
+  
+  .box {
+      width:30vw;
+      margin:20px auto;
+     
+  }
+  
+  #mainImg {
+    position: fixed;
+    right:0;
+    top:10px;
+    z-index: -1;
+  }
+    
+  .loginBox{
+      border: 2px black solid;
+  }

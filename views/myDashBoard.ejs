@@ -1,0 +1,211 @@
+<%- include("partials/header")%>
+
+<%- include("partials/navbar")%>
+<link rel="stylesheet" href="/css/dashboard.css" >
+<div class="content" style="min-height:85vh;">
+<% if(currentUser.role=="admin") {%>
+<div class="container" >
+  <div class="row">
+    <div class="col-lg-10 col-sm-12" style="margin-top:10vh;">
+      <%- include("./partials/flash")%>
+            <h1>Admin DashBoard</h1>
+            <div class="Box" >     
+              <a href='/addNewStudent'><button type="button" class="btn btn-secondary">Add New Student</button> </a>
+              <a href='/addNewTeacher'><button type="button" class="btn btn-secondary">Add New Teacher</button> </a>
+              <a href='/addNewParent'><button type="button" class="btn btn-secondary">Add New Parent</button> </a>  
+            </div>      
+           
+
+  </div>
+  </div>
+  <div class="row">
+  <div class="col-lg-12" style="margin-top:10vh;">
+        
+    <h1>Registered Students</h1>
+    
+    
+    <div class="accordion" id="accordionExample">
+      
+
+        <% for(let i=0;i<12;i++) { %>
+          <% if(students[i].length>=1){%>
+            <div class="accordion-item">
+            <h2 class="accordion-header" id="heading<%=i%>">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<%=i%>" aria-expanded="true" aria-controls="collapse<%=i%>">
+                Class-<%= i+1 %>
+              </button>
+            </h2>
+            <div id="collapse<%=i%>" class="accordion-collapse collapse show" aria-labelledby="heading<%=i%>" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                Students
+                <ul class="list-group">
+                  <% for(student of students[i]) { %>
+                  <li class="list-group-item"><%= student.username %>
+                    <span style="margin-left:60%;">
+                    <a href='/deleteStudent/<%=student._id%>'><button type="button" class="btn btn-secondary">Delete Student</button> </a>
+                    <a href='/editStudent/<%=student._id%>'><button type="button" class="btn btn-secondary">Edit Student detail</button> </a>
+                    </span>
+                  </li>
+                 
+                  <% } %>
+                </ul>
+              </div>
+            </div>
+          </div>
+        
+        <% }} %>
+      </div>
+      
+
+
+</div>
+
+<div class="row">
+  <div class="col-lg-12" style="margin-top:10vh;">
+        
+    <h1>Registered Teachers</h1>
+    
+    
+    <div class="accordion" id="accordionExample2">
+      
+
+            <div class="accordion-item">
+            <h2 class="accordion-header" id="heading2>">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2" aria-expanded="true" aria-controls="collapse2">
+                Teachers
+              </button>
+            </h2>
+            <div id="collapse2" class="accordion-collapse collapse show" aria-labelledby="heading2" data-bs-parent="#accordionExample2">
+              <div class="accordion-body">
+                <ul class="list-group">
+                  <% for(teacher of teachers) { %>
+                  <li class="list-group-item"><%= teacher.username %>
+                    <span style="margin-left:60%;">
+                    <a href='/deleteTeacher/<%=teacher._id%>'><button type="button" class="btn btn-secondary">Delete Teacher</button> </a>
+                    <a href='/editTeacher/<%=teacher._id%>'><button type="button" class="btn btn-secondary">Edit Teacher detail</button> </a>
+                    </span>
+                  </li>
+                 
+                  <% } %>
+                </ul>
+              </div>
+            </div>
+          </div>
+        
+      
+      </div>
+      
+
+
+</div>
+
+</div>
+
+
+
+
+
+
+
+
+</div>
+</div>
+<% }else if(currentUser.role=='teacher'){ %>
+
+  <div class="container" >
+    <div class="row">
+      <div class="col-lg-10 col-sm-12" style="margin-top:10vh;">
+        <%- include("./partials/flash")%>
+              <h1>Teacher DashBoard</h1>
+              <div class="Box" >     
+                <a href='/addNewSubject'><button type="button" class="btn btn-secondary">Add New Subject</button> </a>  
+              </div>      
+             
+  
+    </div>
+    </div>
+    <div class="Box" >
+    <div class="row"style="padding:10px;">
+      <h1>Your Subjects</h1>
+      <% for(subject of subjects){ %>
+
+      <div class="col-lg-4 col-sm-12" style="margin-top:2vh;">
+            
+             <div class="card" style="width: 18rem;">
+              <div class="card-body">
+                <h5 class="card-title"><%=subject.name %></h5>
+                <p class="card-text">Class -<%= subject.class %></p>
+                <a href="/addContent/<%=subject._id %>" class="btn btn-danger mt-2">Add Contents</a>
+                <a href="/viewSubject/<%=subject._id%>" class="btn btn-danger mt-2">View Subject</a>
+                <a href="/deleteSubject/<%=subject._id%>" class="btn btn-danger mt-2">Delete Subject</a>
+              </div>
+            </div>
+    </div>
+    <% } %>
+  
+
+    </div>
+    </div>
+
+ </div>
+  <% } else if(currentUser.role=='student'){ %>
+     
+      
+    <div class="container-fluid" style="height: 100vh;margin-top:10vh;">
+      
+
+      <div class="row" style="height: inherit;">
+
+        <div class="col-3 card" style="background-color: #f50a0ab0;">
+
+            <img class="card-img-top" src="images/default_pic.png" alt="Card image cap">
+            <h5 class="card-title text-center" >Roll No. - <%=currentUser.rollno%></h5>
+
+            <div style="height: 7.5%;"></div>
+
+          <ul class="list-group list-group-flush">
+            <a class="btn btn-light btn-outline-danger" href="#" role="button">My Subjects</a>
+            <a class="btn btn-light btn-outline-danger" href="#" role="button">My Grades</a>
+            <a class="btn btn-light btn-outline-danger" href="#" role="button">My Attendance</a>
+            <a class="btn btn-light btn-outline-danger" href="#" role="button">My Teachers</a>            
+          </ul>
+          
+        </div>
+          
+        <div class="col-9 container-fluid " >
+          <h1>Your Subjects</h1>
+          <div class="d-flex flex-wrap justify-content-center m-3 p-3">
+            
+                
+              
+                <% for(subject of subjects){ %>
+          
+                <div class="col-lg-4 col-sm-12" >
+                      
+                       <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                          <h5 class="card-title"><%=subject.name %></h5>
+                          <p class="card-text">Class -<%= subject.class %></p>
+                           <a href="/viewSubject/<%=subject._id %>" class="btn btn-danger mt-2">View Subject</a>
+                        </div>
+                      </div>
+              </div>
+              <% } %>
+              
+          </div>
+          
+         
+    
+          
+        </div>
+        </div>
+
+      </div>
+
+
+    <%}%>
+</div>
+<script src="js/index.js"></script>
+<%- include("partials/footer")%>
+
+
